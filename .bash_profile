@@ -5,8 +5,7 @@ eval "$(rbenv init -)"
 export PATH="/usr/local/sbin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  . "/usr/local/opt/nvm/nvm.sh"
 
 export PS1="\u@\H > "
 
@@ -39,12 +38,6 @@ alias gst='git stash'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ludwig/google-cloud-sdk/path.bash.inc' ]; then source '/Users/ludwig/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ludwig/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/ludwig/google-cloud-sdk/completion.bash.inc'; fi
 
 # Infinite History from: https://askubuntu.com/questions/339546/how-do-i-see-the-history-of-the-commands-i-have-run-in-tmux
 # avoid duplicates..

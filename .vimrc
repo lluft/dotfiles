@@ -22,11 +22,15 @@ set shiftwidth=2
 set expandtab
 
 set number
+set title
 
+let mapleader = ","
+let g:mapleader = ","
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_show_hidden = 1
 
 inoremap <Up> <NOP>
 vnoremap <Up> <NOP>
@@ -37,21 +41,29 @@ vnoremap <Left> <NOP>
 inoremap <Right> <NOP>
 vnoremap <Right> <NOP>
 
-" map <C-J> :bnext<CR>
-" map <C-K> :bprev<CR>
+" Buffer switching
+map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
 
+nnoremap <leader>b :ls<CR>:b<Space>
 
-let mapleader = ","
-let g:mapleader = ","
+" Maintain undo history between sessions
+set undofile 
+set undodir=~/.vim/undodir
 
-noremap <leader>w :w<cr>
+nnoremap <leader>w :w<cr>
 
 syntax enable
 set background=dark
 let g:solarized_termtrans = 1 " This gets rid of the grey background
 colorscheme solarized
 
-let g:ale_fixers = {'javascript': ['prettier-standard', 'eslint']}
+let g:ale_fixers = {
+      \'javascript': ['prettier-standard', 'eslint'],
+      \'ruby': ['rubocop']
+      \}
+
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
+let g:ale_fix_on_save = 1
 nmap <leader>d <Plug>(ale_fix)
