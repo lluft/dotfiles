@@ -7,7 +7,8 @@ export PATH="/usr/local/sbin:$PATH"
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
-export PS1="\u@\H > "
+# export PS1="\u@\H > "
+export PS1='$(pwd):'
 
 # ----------------------
 # Git Aliases
