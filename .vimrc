@@ -5,12 +5,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'altercation/vim-colors-solarized'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 if has('nvim')
@@ -37,10 +38,8 @@ set title
 let mapleader = ","
 let g:mapleader = ","
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:ctrlp_show_hidden = 1
+" search
+nnoremap <C-p> :Files<Cr>
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -65,6 +64,8 @@ nnoremap <leader>b :ls<CR>:b<Space>
 set undofile 
 set undodir=~/.vim/undodir
 
+let g:ackprg = 'ag --vimgrep'
+
 nnoremap <leader>w :w<cr>
 
 syntax enable
@@ -74,7 +75,8 @@ colorscheme solarized
 
 let g:ale_fixers = {
       \'javascript': ['prettier-standard', 'eslint'],
-      \'ruby': ['rubocop']
+      \'ruby': ['rubocop'],
+      \'erb': ['erubylint']
       \}
 
 let g:ale_sign_error = '✘'
