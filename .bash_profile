@@ -1,15 +1,24 @@
 PATH="/usr/local/bin:$(getconf PATH)"
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+
+eval "$(pyenv init -)"
 eval "$(rbenv init -)"
 export PATH="/usr/local/sbin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
-# export PS1="\u@\H > "
-export PS1='$(pwd):'
+#Language settings  
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
+# export PS1="\u@\H > "
+export PS2='$(pwd):'
+
+export EDITOR='vim'
+
+source ~/.bin/tmuxinator.bash
 # ----------------------
 # Git Aliases
 # adapted from: https://jonsuh.com/blog/git-command-line-shortcuts/
@@ -53,3 +62,4 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # Use vi mode
 set -o vi
 alias be="bundle exec "
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
